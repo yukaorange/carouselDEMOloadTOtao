@@ -1,0 +1,52 @@
+@use "../variables/variables";
+@use "../mixin/mixin";
+
+#container {
+  $this: &;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include mixin.small{
+  //大画面スマホ
+  height: 100svh;
+  }
+  // pointer-events: none;
+}
+
+.measure {
+  display: none;//監視サポート用
+  position: fixed;
+  z-index: 1000;
+  height: 400px;
+  width: 10px;
+  top: 0;
+  left: 10px;
+  border-left: 10px solid #fff;
+  & > * {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+  }
+  .m1 {
+    top: 0px;
+  }
+  .m2 {
+    top: 200px;
+  }
+  .m3 {
+    top: 400px;
+  }
+  .dot{
+    background-color:green;
+    left: 15px;
+  }
+}
+
+html,body{
+  overflow: hidden;
+  overscroll-behavior: none;
+}
