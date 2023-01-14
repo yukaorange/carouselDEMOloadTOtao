@@ -1,6 +1,5 @@
-uniform vec2 uvRate1;
-uniform float uYAspect;
 uniform float uXAspect;
+uniform float uYAspect;
 
 varying vec2 vUv;
 varying vec2 vUv1;
@@ -13,9 +12,9 @@ void main() {
   vUv = uv;
   vec2 _uv = uv - 0.5;//(1)
   vUv1 = _uv;
-  // vUv1 *= uvRate1.xy;
-  vUv1.y *= min(uYAspect, 1.0);//(2)
+  // vUv1 *= uvRate1.xy;//(2)
   vUv1.x *= min(uXAspect, 1.0);
+  vUv1.y *= min(uYAspect, 1.0);
   vUv1 += 0.5;//(3)
   gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
 }

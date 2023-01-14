@@ -147,7 +147,7 @@ export class Sketch {
 * @param {elements:imageArray(data-set=""),log:dom,progress:dom}
 * @//return,type {}
 */
-export class progressLoading {
+export class ProgressLoading {
   constructor(elements, log, progress) {
     this.lengthArray = [];
     this.loadedArray = [];
