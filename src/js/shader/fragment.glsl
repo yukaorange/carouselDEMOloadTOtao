@@ -26,12 +26,14 @@ void main() {
   float p = fract(progress);//(1)
 
   uv.x = 1. - uv.x;
-  float imageProgress = smoothstep(p, p - 0.3, 0.5 * (uv.y + uv.x) + 0.1);//(2)
+  float imageProgress = smoothstep(p, p - 0.3, 0.5 * (uv.y + uv.x));//(2)
   imageProgress = clamp(imageProgress, 0., 1.);//(3)
 
   vec2 translateValue = (p + imageProgress) * accel;//(4)
   vec2 translateValue1 = vec2(-0.5, 1.) * translateValue;//(5)
   vec2 translateValue2 = vec2(-0.5, 1.) * (translateValue - 1. - accel);//(6)
+  // vec2 translateValue1 = vec2(1., 1.) * translateValue;//(5)
+  // vec2 translateValue2 = vec2(1., 1.) * (translateValue - 1. - accel);//(6)
 
   vec2 w = sin(sin(time) * vec2(0., 0.3) + vUv.yx * vec2(0, 4.4)) * vec2(0., 0.5);//(7)
   vec2 xy = w * (tri(p) * 0.5 + tri(imageProgress) * 0.5);//(8)

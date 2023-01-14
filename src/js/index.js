@@ -50,7 +50,7 @@ async function init() {
       const currentTouchY = e.touches[0].clientY;
       const touchDeltaY = previousTouchY - currentTouchY;
       previousTouchY = currentTouchY;
-      speed += touchDeltaY * 0.0028; //タッチパネルの場合
+      speed += touchDeltaY * 0.0005; //タッチパネルの場合
     });
   }
   document.addEventListener("wheel", (event) => {
@@ -60,7 +60,7 @@ async function init() {
   function raf() {
     const tl = gsap.timeline();
     position += speed;
-    speed *= 0.99; //スクロールスピードのブレーキ量を指定。ブレーキが強すぎると四捨五入の閾値を超えられない。
+    speed *= 0.97; //スクロールスピードのブレーキ量を指定。ブレーキが強すぎると四捨五入の閾値を超えられない。
 
     let i = Math.round(position);
     let dif = i - position;
@@ -68,8 +68,11 @@ async function init() {
     // dif = dif < 0 ? Math.max(dif, -0.02) : Math.min(dif, +0.02);
 
     // position += Math.sign(dif) * Math.pow(Math.abs(dif), 0.7) * 0.015;
-    position += Math.sign(dif) * Math.pow(Math.abs(dif), 0.4) * 0.015; //0へ収束
-    if (Math.abs(i - position) < 0.001) {
+    position += Math.sign(dif) * Math.pow(Math.abs(dif), 0.8) * 0.05; //0へ収束
+    // if (Math.abs(i - position) < 0.001) {
+    //   position = i;
+    // }
+    if (Math.abs(dif) < 0.001) {
       position = i;
     }
 
