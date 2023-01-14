@@ -5,11 +5,11 @@ import { Sketch } from "./webgl";
 import { ProgressLoading } from "./baseSet";
 gsap.registerPlugin(ScrollTrigger);
 
-const loading = new ProgressLoading(
-  document.querySelectorAll("#loading"),
-  document.querySelector("#log"),
-  document.querySelector("#progress")
-);
+// const loading = new ProgressLoading(
+//   document.querySelectorAll("#loading"),
+//   document.querySelector("#log"),
+//   document.querySelector("#progress")
+// );
 
 init();
 async function init() {
